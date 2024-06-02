@@ -12,13 +12,12 @@ fi
 sudo apt-get update
 sudo apt-get ugrade
 
-# check snap is installed
-
 # chrome
 wget -O "${TMP_FOLDER}/google-chrome-stable_current_amd64.deb" \
     https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i "${TMP_FOLDER}/google-chrome-stable_current_amd64.deb"
 
+# vscode & extensions
 sudo snap install --classic code
 code --install-extension \
     waderyan.gitblame \
@@ -44,23 +43,38 @@ code --install-extension \
     ms-azuretools.vscode-docker \
     ms-vscode-remote.remote-containers \
     rangav.vscode-thunder-client \
-    ms-vscode-remote.remote-containers \
     davidanson.vscode-markdownlint
 
+# docker
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+## add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
 
+# spotify
 sudo snap install spotify
 
+# python dependency & texlive & texmaker
 sudo apt-get install \
     liblzma-dev \
     lzma \
     texlive-full \
     texmaker
 
+# gimp & telegram & python & node
 sudo apt install -y \
     gimp \
     telegram-desktop \
-    python3-tk
+    python3-tk \
+    nodejs
 
+# pyenv
 wget -O "${TMP_FOLDER}/install_pyenv.sh" \
     https://github.com/macfernandez/venv-creation/blob/main/install-pyenv.sh?raw=true
 chmod +x "${TMP_FOLDER}/install_pyenv.sh"
