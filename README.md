@@ -14,16 +14,13 @@ The script will install:
 - Gimp
 - Google Chrome
 - Python 3
+- Python dependencies (lzma)
 - Pyenv
 - Snap
 - Spotify
 - Telegram
 - TexLive
 - TexMaker
-sudo apt-get install \
-    liblzma-dev \
-    lzma \
-
 - Visual Studio Code and the following extensions
     - Docker
     - Git Blame
